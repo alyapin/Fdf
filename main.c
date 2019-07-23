@@ -6,7 +6,7 @@
 /*   By: kzina <kzina@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/18 15:24:18 by kzina             #+#    #+#             */
-/*   Updated: 2019/07/23 16:39:01 by kzina            ###   ########.fr       */
+/*   Updated: 2019/07/23 17:04:41 by kzina            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,13 @@ int     reader(int fd)
     return 0;
 }
 
+int     key_press(int keycode, void *param)
+{
+    if (keycode == 53)
+        exit(0);
+    return (0);
+}
+
 int     main(int ac, char **av)
 {   
     void    *mlx_ptr;
@@ -66,7 +73,7 @@ int     main(int ac, char **av)
     t->mlx = mlx_ptr;
     t->win = win_ptr;
     mlx_pixel_put(mlx_ptr, win_ptr, 250, 250, 0xFFFFFF);
-    mlx_hook(t->win, 17, 0, close, (void *)0);
+    mlx_hook(t->win, 2, 0, key_press, t);
     mlx_loop(win_ptr);
     return (0);
 }
