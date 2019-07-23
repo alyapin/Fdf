@@ -6,11 +6,10 @@
 /*   By: kzina <kzina@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/19 16:41:55 by kzina             #+#    #+#             */
-/*   Updated: 2019/07/19 18:48:37 by kzina            ###   ########.fr       */
+/*   Updated: 2019/07/23 13:52:03 by kzina            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-//#include "mlx.h"
 #include <unistd.h>
 #include <stdlib.h>
 #include <fcntl.h>
