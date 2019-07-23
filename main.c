@@ -6,7 +6,7 @@
 /*   By: kzina <kzina@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/18 15:24:18 by kzina             #+#    #+#             */
-/*   Updated: 2019/07/23 16:27:44 by kzina            ###   ########.fr       */
+/*   Updated: 2019/07/23 16:39:01 by kzina            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@
     mlx_pixels_put(t->mlx, t->win, 250, 250, 0xFFFFFF); 
     return 0;
 }*/
-
 int     reader(int fd)
 {
     char    *input;
