@@ -6,11 +6,11 @@
 /*   By: kzina <kzina@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/18 15:24:18 by kzina             #+#    #+#             */
-/*   Updated: 2019/07/23 16:38:15 by kzina            ###   ########.fr       */
+/*   Updated: 2019/07/23 18:17:14 by kzina            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf.h"
+#include "/Users/kzina/fdf/includes/fdf.h"
 #include "mlx.h"
 #include <errno.h>
 #include <fcntl.h>
@@ -38,9 +38,8 @@ int     reader(int fd)
         input = ft_strjoin(input, "\n");
         ct_str++;
     }
-    ft_putstr(input);
     if (ct_str == 0)
-        return NULL;
+        return 1;
     return 0;
 }
 
@@ -65,8 +64,7 @@ int     main(int ac, char **av)
     t = (t_mlx*)malloc(sizeof(t_mlx));
     t->mlx = mlx_ptr;
     t->win = win_ptr;
-    mlx_pixel_put(mlx_ptr, win_ptr, 250, 250, 0xFFFFFF);
-    mlx_hook(t->win, 17, 0, close, (void *)0);
+    controls(t);
     mlx_loop(win_ptr);
     return (0);
 }
