@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kzina <kzina@student.42.fr>                +#+  +:+       +#+        */
+/*   By: mtruman <mtruman@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 16:17:59 by kzina             #+#    #+#             */
-/*   Updated: 2019/07/19 17:46:38 by kzina            ###   ########.fr       */
+/*   Updated: 2019/07/24 17:08:39 by mtruman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,5 +106,6 @@ t_list				*ft_lstmerge(t_list *lst1, t_list *lst2);
 size_t				ft_lstcount(t_list *lst);
 void				ft_lstrev(t_list **alst);
 int					get_next_line(const int fd, char **line);
+int					ft_count_word(char const *str, char c);
 
 #endif

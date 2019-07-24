@@ -3,14 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kzina <kzina@student.42.fr>                +#+  +:+       +#+        */
+/*   By: mtruman <mtruman@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/18 15:24:18 by kzina             #+#    #+#             */
-/*   Updated: 2019/07/19 18:56:10 by kzina            ###   ########.fr       */
+/*   Updated: 2019/07/24 15:32:10 by mtruman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
+//#include "mlx.h"
+#include <errno.h>
+#include <fcntl.h>
+#include <stdlib.h>
 
 /*int     deal(t_mlx *t)
 {
@@ -20,26 +24,25 @@
     mlx_pixels_put(t->mlx, t->win, 250, 250, 0xFFFFFF); 
     return 0;
 }*/
-
 int     reader(int fd)
 {
     char    *input;
     char    *temp;
     int     ct_str;
-    char    n;
 
     ct_str = 0;
-    n = '\n';
     input = (char*)ft_memalloc(sizeof(char));
     while (get_next_line(fd, &temp) > 0)
     {
         input = ft_strjoin(input, temp);
-        input = ft_strjoin(input, &n);
+        input = ft_strjoin(input, "\n");
         ct_str++;
     }
-    ft_putstr(input);
-    if (ct_str == 0)
-        return NULL;
+    //ft_putstr(input);
+    //printf("%d",check(input));
+    pars(input);
+    //if (ct_str == 0)
+  //      return NULL;
     return 0;
 }
 
@@ -65,7 +68,7 @@ int     main(int ac, char **av)
     t->mlx = mlx_ptr;
     t->win = win_ptr;
     mlx_pixel_put(mlx_ptr, win_ptr, 250, 250, 0xFFFFFF);
-    mlx_key_hook(win_ptr, deal, t);
+    mlx_hook(t->win, 17, 0, close, (void *)0);
     mlx_loop(win_ptr);*/
     return (0);
 }
