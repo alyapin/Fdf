@@ -6,14 +6,11 @@
 /*   By: kzina <kzina@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/19 16:41:55 by kzina             #+#    #+#             */
-/*   Updated: 2019/07/23 13:52:03 by kzina            ###   ########.fr       */
+/*   Updated: 2019/07/24 17:50:37 by kzina            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-#include <stdlib.h>
-#include <fcntl.h>
-#include "libft/libft.h"
+#include "../libft/libft.h"
 
 struct          s_mlx
 {
@@ -29,3 +26,6 @@ struct          s_cord
     int             z;
     struct s_cord   *next;
 }typedef        t_cord;
+
+void    controls(t_mlx *param);
+t_mlx   *init_map(void);

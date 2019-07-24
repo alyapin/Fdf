@@ -6,11 +6,15 @@
 /*   By: kzina <kzina@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/18 15:24:18 by kzina             #+#    #+#             */
+<<<<<<< HEAD:main.c
 /*   Updated: 2019/07/23 17:04:41 by kzina            ###   ########.fr       */
+=======
+/*   Updated: 2019/07/24 17:51:01 by kzina            ###   ########.fr       */
+>>>>>>> alyapin:sources/main.c
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf.h"
+#include "../includes/fdf.h"
 #include "mlx.h"
 #include <errno.h>
 #include <fcntl.h>
@@ -38,9 +42,8 @@ int     reader(int fd)
         input = ft_strjoin(input, "\n");
         ct_str++;
     }
-    ft_putstr(input);
     if (ct_str == 0)
-        return NULL;
+        return 1;
     return 0;
 }
 
@@ -53,8 +56,6 @@ int     key_press(int keycode, void *param)
 
 int     main(int ac, char **av)
 {   
-    void    *mlx_ptr;
-    void    *win_ptr;
     t_mlx   *t;
 
     if (ac != 2)
@@ -67,6 +68,7 @@ int     main(int ac, char **av)
         ft_putstr("reading from file error\n");
         return (1);
     }
+<<<<<<< HEAD:main.c
     mlx_ptr = mlx_init();
     win_ptr = mlx_new_window(mlx_ptr, 500, 500, "First window");
     t = (t_mlx*)malloc(sizeof(t_mlx));
@@ -75,5 +77,10 @@ int     main(int ac, char **av)
     mlx_pixel_put(mlx_ptr, win_ptr, 250, 250, 0xFFFFFF);
     mlx_hook(t->win, 2, 0, key_press, t);
     mlx_loop(win_ptr);
+=======
+    t = init_map();
+    controls(t);
+    mlx_loop(t->mlx);
+>>>>>>> alyapin:sources/main.c
     return (0);
 }
