@@ -6,11 +6,11 @@
 /*   By: kzina <kzina@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/18 15:24:18 by kzina             #+#    #+#             */
-/*   Updated: 2019/07/23 18:17:14 by kzina            ###   ########.fr       */
+/*   Updated: 2019/07/24 17:51:01 by kzina            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "/Users/kzina/fdf/includes/fdf.h"
+#include "../includes/fdf.h"
 #include "mlx.h"
 #include <errno.h>
 #include <fcntl.h>
@@ -45,8 +45,6 @@ int     reader(int fd)
 
 int     main(int ac, char **av)
 {   
-    void    *mlx_ptr;
-    void    *win_ptr;
     t_mlx   *t;
 
     if (ac != 2)
@@ -59,12 +57,8 @@ int     main(int ac, char **av)
         ft_putstr("reading from file error\n");
         return (1);
     }
-    mlx_ptr = mlx_init();
-    win_ptr = mlx_new_window(mlx_ptr, 500, 500, "First window");
-    t = (t_mlx*)malloc(sizeof(t_mlx));
-    t->mlx = mlx_ptr;
-    t->win = win_ptr;
+    t = init_map();
     controls(t);
-    mlx_loop(win_ptr);
+    mlx_loop(t->mlx);
     return (0);
 }

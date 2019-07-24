@@ -1,31 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fdf.h                                              :+:      :+:    :+:   */
+/*   init_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kzina <kzina@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/07/19 16:41:55 by kzina             #+#    #+#             */
-/*   Updated: 2019/07/24 17:50:37 by kzina            ###   ########.fr       */
+/*   Created: 2019/07/24 17:40:57 by kzina             #+#    #+#             */
+/*   Updated: 2019/07/24 17:52:54 by kzina            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "../includes/fdf.h"
 #include "../libft/libft.h"
+#include "mlx.h"
 
-struct          s_mlx
+t_mlx   *init_map(void)
 {
-    void    *mlx;
-    void    *win;
-}typedef        t_mlx;
+    t_mlx   *ses;
 
-struct          s_cord
-{
-    int             x;
-    int             y;
-    int             color;
-    int             z;
-    struct s_cord   *next;
-}typedef        t_cord;
-
-void    controls(t_mlx *param);
-t_mlx   *init_map(void);
+    if ((ses = (t_mlx *)ft_memalloc(sizeof(t_mlx))) == NULL)
+        return (NULL);
+    ses->mlx = mlx_init();
+    ses->win = mlx_new_window(ses->mlx, 1000, 1000, "FDF");
+    return (ses);
+}
