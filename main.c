@@ -3,15 +3,23 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kzina <kzina@student.42.fr>                +#+  +:+       +#+        */
+/*   By: mtruman <mtruman@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/18 15:24:18 by kzina             #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2019/07/23 16:39:01 by kzina            ###   ########.fr       */
+=======
+/*   Updated: 2019/07/24 15:32:10 by mtruman          ###   ########.fr       */
+>>>>>>> petya
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
+<<<<<<< HEAD
 #include "mlx.h"
+=======
+//#include "mlx.h"
+>>>>>>> petya
 #include <errno.h>
 #include <fcntl.h>
 #include <stdlib.h>
@@ -38,9 +46,11 @@ int     reader(int fd)
         input = ft_strjoin(input, "\n");
         ct_str++;
     }
-    ft_putstr(input);
-    if (ct_str == 0)
-        return NULL;
+    //ft_putstr(input);
+    //printf("%d",check(input));
+    pars(input);
+    //if (ct_str == 0)
+  //      return NULL;
     return 0;
 }
 
@@ -67,6 +77,10 @@ int     main(int ac, char **av)
     t->win = win_ptr;
     mlx_pixel_put(mlx_ptr, win_ptr, 250, 250, 0xFFFFFF);
     mlx_hook(t->win, 17, 0, close, (void *)0);
+<<<<<<< HEAD
     mlx_loop(win_ptr);
+=======
+    mlx_loop(win_ptr);*/
+>>>>>>> petya
     return (0);
 }

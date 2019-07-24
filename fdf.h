@@ -3,17 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   fdf.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kzina <kzina@student.42.fr>                +#+  +:+       +#+        */
+/*   By: mtruman <mtruman@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/19 16:41:55 by kzina             #+#    #+#             */
-/*   Updated: 2019/07/23 13:52:03 by kzina            ###   ########.fr       */
+/*   Updated: 2019/07/24 18:16:28 by mtruman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-#include <stdlib.h>
-#include <fcntl.h>
-#include "libft/libft.h"
+#ifndef FDF_H
+# define FDF_H
+# include <unistd.h>
+# include <stdlib.h>
+# include <fcntl.h>
+# include "libft/libft.h"
 
 struct          s_mlx
 {
@@ -29,3 +31,8 @@ struct          s_cord
     int             z;
     struct s_cord   *next;
 }typedef        t_cord;
+int check(char *str);
+int pars(char *str);
+int			ft_atoi_base(char *nb, int base);
+
+#endif
