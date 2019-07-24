@@ -1,6 +1,11 @@
 {
     "files.associations": {
+<<<<<<< HEAD
         "fdf.h": "c",
         "libft.h": "c"
+=======
+        "libft.h": "c",
+        "fdf.h": "c"
+>>>>>>> d8e0533aa0ac10e99b4a1aa7c533e14a410bbcff
     }
 }
