@@ -6,7 +6,7 @@
 /*   By: kzina <kzina@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/26 14:05:02 by kzina             #+#    #+#             */
-/*   Updated: 2019/07/26 15:06:33 by kzina            ###   ########.fr       */
+/*   Updated: 2019/07/26 15:11:42 by kzina            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -146,7 +146,7 @@ t_cord  *pars(char *str)
                 points->y = j;
                 points->z = ft_atoi(line2[j]);
                 points->color = color(line2[j]);
-                points->next = (t_cord *)ft_memalloc(sizeof(t_cord*));
+                points->next = (t_cord *)ft_memalloc(sizeof(t_cord));
                 points = points->next;
             }
             else if((check_point(line2[j]) == 0))
