@@ -6,7 +6,7 @@
 /*   By: kzina <kzina@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/19 16:41:55 by kzina             #+#    #+#             */
-/*   Updated: 2019/07/26 14:18:55 by kzina            ###   ########.fr       */
+/*   Updated: 2019/07/26 18:11:39 by kzina            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ int		ft_atoi_base(char *nb, int base);
 void    controls(t_mlx *param);
 t_mlx   *init_map(void);
 int			ft_atoi_base(char *nb, int base);
-
+t_cord      *new_t_cord(int x, int y, int z, int color);
+void        push_back_t_cord(t_cord **head, int x, int y, int z, int color);
 
 #endif

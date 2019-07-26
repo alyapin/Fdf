@@ -6,7 +6,7 @@
 /*   By: kzina <kzina@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/18 15:24:18 by kzina             #+#    #+#             */
-/*   Updated: 2019/07/26 15:03:57 by kzina            ###   ########.fr       */
+/*   Updated: 2019/07/26 17:39:58 by kzina            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,9 @@ void    draw_map(t_cord *map, t_mlx *param)
 {
     while (map)
     {
-        printf("%d -- x, %d -- y, %d -- z", map->x, map->y, map->z);
-        map = map->next;
+        mlx_pixel_put(param->mlx, param->win, (map->x * 10) / ((map->z + 10)* 10) + 250, map->y / (map->z + 10) + 250, 0xFFFFFF);
+        map = map->next; 
     }
-    mlx_pixel_put(param->mlx, param->win, 100, 100, 0xFFFFFF);
 }
 
 char    *reader(int fd)

@@ -6,11 +6,12 @@
 /*   By: kzina <kzina@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/26 14:05:02 by kzina             #+#    #+#             */
-/*   Updated: 2019/07/26 15:11:42 by kzina            ###   ########.fr       */
+/*   Updated: 2019/07/26 18:11:32 by kzina            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fdf.h"
+#include "../libft/libft.h"
 #include <string.h>
 #include <stdio.h>
 
@@ -23,9 +24,9 @@ int     color(char *str)
     i = 0;
     j = 0;
     tmp = malloc(8);
-    while(str[i] != ',')
+    while(str[i] != ',' && str[i])
         i++;
-    i= i + 3;
+    i = str[i] ? i + 3 : i;
     while (str[i] != '\0')
     {
         tmp[j] = str[i];
@@ -65,8 +66,8 @@ int  check_point(char *line)
     if(line[i] == '\0')
         return (1);
     if(line[i] == ',' && line[i + 1]=='0' && line[i + 2] == 'x')
-        return (2);
-    return (0);
+        return (color(&line[i]));
+    return (-1);
 }
 
 int check(char *str)
@@ -116,14 +117,12 @@ void    ft_corddel(t_cord *head)
 t_cord  *pars(char *str)
 {
     t_cord      *head;
-    t_cord      *points;
     char **line;
     char **line2;
     int  i;
     int  j;
 
-    points = (t_cord *)ft_memalloc(sizeof(t_cord*));
-    head = points;
+    head = NULL;
     i = 0;
     j = 0;
     line = ft_strsplit(str, '\n');
@@ -132,24 +131,9 @@ t_cord  *pars(char *str)
         line2 = ft_strsplit(line[i], ' ');
         while (j <= ft_count_word(line[i], ' '))
         {
-            if(check_point(line2[j]) == 1)
-            {
-                points->x = i;
-                points->y = j;
-                points->z = ft_atoi(line2[j]);
-                points->next = (t_cord *)ft_memalloc(sizeof(t_cord));
-                points = points->next;
-            }
-            else if(check_point(line2[j]) == 2)
-            {
-                points->x = i;
-                points->y = j;
-                points->z = ft_atoi(line2[j]);
-                points->color = color(line2[j]);
-                points->next = (t_cord *)ft_memalloc(sizeof(t_cord));
-                points = points->next;
-            }
-            else if((check_point(line2[j]) == 0))
+            if(check_point(line2[j]) != -1)
+                push_back_t_cord(&head, i, j, ft_atoi(line2[j]), check_point(line2[j]));
+            else 
             {
                 ft_corddel(head);
                 return (NULL);
