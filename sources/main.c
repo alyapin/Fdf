@@ -6,7 +6,7 @@
 /*   By: kzina <kzina@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/18 15:24:18 by kzina             #+#    #+#             */
-/*   Updated: 2019/07/26 13:42:22 by kzina            ###   ########.fr       */
+/*   Updated: 2019/07/26 15:03:57 by kzina            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,17 @@
     mlx_pixels_put(t->mlx, t->win, 250, 250, 0xFFFFFF); 
     return 0;
 }*/
-int     reader(int fd)
+void    draw_map(t_cord *map, t_mlx *param)
+{
+    while (map)
+    {
+        printf("%d -- x, %d -- y, %d -- z", map->x, map->y, map->z);
+        map = map->next;
+    }
+    mlx_pixel_put(param->mlx, param->win, 100, 100, 0xFFFFFF);
+}
+
+char    *reader(int fd)
 {
     char    *input;
     char    *temp;
@@ -40,26 +50,30 @@ int     reader(int fd)
         ct_str++;
     }
     if (ct_str == 0)
-        return 1;
-    return 0;
+        return NULL;
+    return (input);
 }
 
 int     main(int ac, char **av)
 {   
     t_mlx   *t;
+    char    *str;
+    t_cord  *map;
 
     if (ac != 2)
     {
         ft_putstr("usage: fdf input_file\n");
         return (1);
     }
-    if (reader(open(av[1], O_RDONLY)) == 1)
+    if ((str = reader(open(av[1], O_RDONLY))) == NULL)
     {
         ft_putstr("reading from file error\n");
         return (1);
     }
     t = init_map();
     controls(t);
+    map = pars(str);
+    draw_map(map, t);
     mlx_loop(t->mlx);
     return (0);
 }

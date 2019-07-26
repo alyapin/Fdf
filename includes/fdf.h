@@ -6,7 +6,7 @@
 /*   By: kzina <kzina@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/19 16:41:55 by kzina             #+#    #+#             */
-/*   Updated: 2019/07/26 13:41:35 by kzina            ###   ########.fr       */
+/*   Updated: 2019/07/26 14:18:55 by kzina            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,10 +33,11 @@ struct          s_cord
 }typedef        t_cord;
 
 int     check(char *str);
-int     pars(char *str);
+t_cord  *pars(char *str);
 int		ft_atoi_base(char *nb, int base);
 void    controls(t_mlx *param);
 t_mlx   *init_map(void);
+int			ft_atoi_base(char *nb, int base);
 
 
 #endif

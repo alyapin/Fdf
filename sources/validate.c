@@ -1,4 +1,16 @@
-#include "fdf.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   validate.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: kzina <kzina@student.42.fr>                +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/07/26 14:05:02 by kzina             #+#    #+#             */
+/*   Updated: 2019/07/26 15:06:33 by kzina            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "../includes/fdf.h"
 #include <string.h>
 #include <stdio.h>
 
@@ -46,6 +58,8 @@ int  check_point(char *line)
     int i;
 
     i = 0;
+    if (line[i] == '-')
+        i++;
     while (line[i]>= '0' && line[i]<= '9')
         i++;
     if(line[i] == '\0')
@@ -118,24 +132,24 @@ t_cord  *pars(char *str)
         line2 = ft_strsplit(line[i], ' ');
         while (j <= ft_count_word(line[i], ' '))
         {
-            if(check_point(&line2[i][j]) == 1)
+            if(check_point(line2[j]) == 1)
             {
                 points->x = i;
                 points->y = j;
-                points->z = ft_atoi(&line2[i][j]);
-                points->next = (t_cord *)ft_memalloc(sizeof(t_cord*));
+                points->z = ft_atoi(line2[j]);
+                points->next = (t_cord *)ft_memalloc(sizeof(t_cord));
                 points = points->next;
             }
-            else if(check_point(&line2[i][j]) == 2)
+            else if(check_point(line2[j]) == 2)
             {
                 points->x = i;
                 points->y = j;
-                points->z = ft_atoi(&line2[i][j]);
-                points->color = color(&line[i][j]);
+                points->z = ft_atoi(line2[j]);
+                points->color = color(line2[j]);
                 points->next = (t_cord *)ft_memalloc(sizeof(t_cord*));
                 points = points->next;
             }
-            else if(put_point(line2[i][j] == 0))
+            else if((check_point(line2[j]) == 0))
             {
                 ft_corddel(head);
                 return (NULL);

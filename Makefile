@@ -6,7 +6,7 @@
 #    By: kzina <kzina@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/02/22 23:12:10 by pbondoer          #+#    #+#              #
-#    Updated: 2019/07/24 17:51:46 by kzina            ###   ########.fr        #
+#    Updated: 2019/07/26 14:19:16 by kzina            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,6 +15,8 @@ NAME = fdf
 SRC = main.c\
 	  controls.c\
 	  init_map.c\
+	  validate.c\
+	  atoi_16.c\
 
 OBJ	= $(addprefix $(OBJDIR),$(SRC:.c=.o))
 

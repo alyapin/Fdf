@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   atoi_16.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mtruman <mtruman@student.42.fr>            +#+  +:+       +#+        */
+/*   By: kzina <kzina@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/06 16:52:05 by dtedgui           #+#    #+#             */
-/*   Updated: 2019/07/24 18:20:56 by mtruman          ###   ########.fr       */
+/*   Updated: 2019/07/26 14:19:28 by kzina            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft/libft.h"
+#include "../libft/libft.h"
 
 int		ft_power(int nb, int power)
 {
