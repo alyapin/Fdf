@@ -3,11 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fdf.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mtruman <mtruman@student.42.fr>            +#+  +:+       +#+        */
+/*   By: kzina <kzina@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/19 16:41:55 by kzina             #+#    #+#             */
-<<<<<<< HEAD:fdf.h
-/*   Updated: 2019/07/24 18:16:28 by mtruman          ###   ########.fr       */
+/*   Updated: 2019/07/26 13:37:27 by kzina            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +16,6 @@
 # include <stdlib.h>
 # include <fcntl.h>
 # include "libft/libft.h"
-=======
-/*   Updated: 2019/07/24 17:50:37 by kzina            ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
-#include "../libft/libft.h"
->>>>>>> d8e0533aa0ac10e99b4a1aa7c533e14a410bbcff:includes/fdf.h
 
 struct          s_mlx
 {
@@ -39,14 +31,12 @@ struct          s_cord
     int             z;
     struct s_cord   *next;
 }typedef        t_cord;
-<<<<<<< HEAD:fdf.h
-int check(char *str);
-int pars(char *str);
-int			ft_atoi_base(char *nb, int base);
 
-#endif
-=======
-
+int     check(char *str);
+int     pars(char *str);
+int		ft_atoi_base(char *nb, int base);
 void    controls(t_mlx *param);
 t_mlx   *init_map(void);
->>>>>>> d8e0533aa0ac10e99b4a1aa7c533e14a410bbcff:includes/fdf.h
+
+
+#endif
