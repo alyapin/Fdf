@@ -6,16 +6,13 @@
 /*   By: kzina <kzina@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/18 15:24:18 by kzina             #+#    #+#             */
-/*   Updated: 2019/07/26 17:39:58 by kzina            ###   ########.fr       */
+/*   Updated: 2019/07/27 17:56:04 by kzina            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fdf.h"
 #include "../libft/libft.h"
 #include "mlx.h"
-#include <errno.h>
-#include <fcntl.h>
-#include <stdlib.h>
 
 /*int     deal(t_mlx *t)
 {
@@ -29,6 +26,7 @@ void    draw_map(t_cord *map, t_mlx *param)
 {
     while (map)
     {
+        mlx_pixel_put(param->mlx, param->win, (map->x * 10) / ((map->z + 10)* 10) + 250, map->y / (map->z + 10) + 250, 0xFFFFFF);
         mlx_pixel_put(param->mlx, param->win, (map->x * 10) / ((map->z + 10)* 10) + 250, map->y / (map->z + 10) + 250, 0xFFFFFF);
         map = map->next; 
     }
@@ -55,10 +53,17 @@ char    *reader(int fd)
 
 int     main(int ac, char **av)
 {   
-    t_mlx   *t;
-    char    *str;
-    t_cord  *map;
+    t_mlx       *t;
+    char        *str;
+    //t_linecor   *xy;
+    t_cord      *map;
+    t_image     *img;
+    int         z[10][10] = {{1,1,1,1,1,1,1,1,1,1},{1,1,1,1,1,1,1,1,1,1},{1,1,1,1,1,1,1,1,1,1},{1,1,1,1,1,1,1,1,1,1},
+    {1,1,1,1,1,1,1,1,1,1},{1,1,1,1,1,1,1,1,1,1},{1,1,1,1,1,1,1,1,1,1},{1,1,1,1,1,1,1,1,1,1},{1,1,1,1,1,1,1,1,1,1},
+    {1,1,1,1,1,1,1,1,1,1}};
 
+    //xy = (t_linecor *)ft_memalloc(sizeof(t_linecor));
+    img = (t_image *)ft_memalloc(sizeof(t_image));
     if (ac != 2)
     {
         ft_putstr("usage: fdf input_file\n");
@@ -72,7 +77,12 @@ int     main(int ac, char **av)
     t = init_map();
     controls(t);
     map = pars(str);
-    draw_map(map, t);
+    //draw_map(map, t);
+    img->image = mlx_new_image(t->mlx, 1000, 1000);
+    img->data_address = (int *) mlx_get_data_addr(img->image, &img->bpp, &img->line_size, &img->endian);
+    img->line_size /= 4;
+    img->t = t;
+    temp_draw_map(z, img);
     mlx_loop(t->mlx);
     return (0);
 }

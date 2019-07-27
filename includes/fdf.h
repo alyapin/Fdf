@@ -6,7 +6,7 @@
 /*   By: kzina <kzina@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/19 16:41:55 by kzina             #+#    #+#             */
-/*   Updated: 2019/07/27 14:45:35 by kzina            ###   ########.fr       */
+/*   Updated: 2019/07/27 17:08:25 by kzina            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,17 @@ typedef struct      s_linecor
     int             y1;
 }                   t_linecor;
 
+typedef struct      s_image
+{
+    void            *mlx;
+    void            *w;
+    int             *image;
+    int             *data_address;
+    int             bpp;
+    int             line_size;
+    int             endian;
+    t_mlx            *t;
+}                   t_image;
 
 
 int     check(char *str);
@@ -60,6 +71,7 @@ t_mlx   *init_map(void);
 int		ft_atoi_base(char *nb, int base);
 t_cord  *new_t_cord(int x, int y, int z, int color);
 void    push_back_t_cord(t_cord **head, int x, int y, int z, int color);
-void    draw(t_linecor  *xy, t_mlx *param);
+void    draw(t_linecor  *xy, t_image *param);
+void    temp_draw_map(int z[10][10], t_image *param);
 
 #endif

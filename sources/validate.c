@@ -6,7 +6,7 @@
 /*   By: kzina <kzina@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/26 14:05:02 by kzina             #+#    #+#             */
-/*   Updated: 2019/07/26 18:11:32 by kzina            ###   ########.fr       */
+/*   Updated: 2019/07/27 16:07:21 by kzina            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int     color(char *str)
     return (j);
 }
 
-int		ft_count_word(char const *str, char c)
+int		ft_count_word1(char const *str, char c)
 {
 	int		count;
 
@@ -126,10 +126,10 @@ t_cord  *pars(char *str)
     i = 0;
     j = 0;
     line = ft_strsplit(str, '\n');
-    while (i <= ft_count_word (str, '\n'))
+    while (i <= ft_count_word1(str, '\n'))
     {
         line2 = ft_strsplit(line[i], ' ');
-        while (j <= ft_count_word(line[i], ' '))
+        while (j <= ft_count_word1(line[i], ' '))
         {
             if(check_point(line2[j]) != -1)
                 push_back_t_cord(&head, i, j, ft_atoi(line2[j]), check_point(line2[j]));

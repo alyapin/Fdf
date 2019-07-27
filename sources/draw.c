@@ -6,7 +6,7 @@
 /*   By: kzina <kzina@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/27 13:35:52 by kzina             #+#    #+#             */
-/*   Updated: 2019/07/27 15:01:56 by kzina            ###   ########.fr       */
+/*   Updated: 2019/07/27 17:03:46 by kzina            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,18 +22,20 @@ void    swap_coor(int *x, int *y)
     *x = *x - *y;
 }
 
-void    draw_line(t_line *line, int x1, t_mlx *param)
+void    draw_line(t_line *line, int x1, t_image *params)
 {
-    int x;
-    int y;
-    int k;
+    int     x;
+    int     y;
+    int     k;
+    t_mlx   *param;
 
+    param = params->t;
     x = line->x;
     y = line->y;
     k = line->k;
     while (x <= x1)
     {
-        mlx_pixel_put(param->mlx, param->win, k == 1 ? y : x, k == 1 ? x : y, 0xFFFFFF);
+        params->data_address[(k == 1 ? y : x) * params->line_size + (k == 1 ? x : y)] = 0xFFFFFF;
         line->error -= line->dy;
         if (line->error < 0)
         {
@@ -42,9 +44,10 @@ void    draw_line(t_line *line, int x1, t_mlx *param)
         }
         x++;
     }
+    mlx_put_image_to_window(param->mlx, param->win, params->image, 500, 500);
 }
 
-void    draw(t_linecor  *xy, t_mlx *param)
+void    draw(t_linecor  *xy, t_image *param)
 {
     t_line  *line;
 
