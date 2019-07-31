@@ -6,7 +6,7 @@
 /*   By: kzina <kzina@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/27 13:35:52 by kzina             #+#    #+#             */
-/*   Updated: 2019/07/31 14:57:12 by kzina            ###   ########.fr       */
+/*   Updated: 2019/07/31 17:02:04 by kzina            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,6 @@ void    draw_line(t_line *line, int x1, t_mlx *params)
         }
         x++;
     }
-    mlx_put_image_to_window(params->mlx, params->win, param->image, 500, 500);
 }
 
 void    draw(t_linecor  *xy, t_mlx *param)

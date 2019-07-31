@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   validate.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mtruman <mtruman@student.42.fr>            +#+  +:+       +#+        */
+/*   By: kzina <kzina@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/26 14:05:02 by kzina             #+#    #+#             */
-/*   Updated: 2019/07/31 15:13:34 by mtruman          ###   ########.fr       */
+/*   Updated: 2019/07/31 16:54:50 by kzina            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ int		ft_count_word1(char const *str, char c)
 		if (*str == c || (*str == '\0' && *(str - 1) != c))
 			count++;
 	}
-	return (count - 1);
+	return (count);
 }
 int  check_point(char *line)
 {
@@ -108,14 +108,14 @@ void    ft_corddel(t_cord *head)
     temp = head;
     free(temp);
 }
-int *put_cord(char *str, t_cord **cord, int i, int l)
+int     put_cord(char **str, t_cord **cord, int i, int l)
 {
     int j;
     t_cord *tmp;
 
     tmp = *cord;
     j = 0;
-    while (j <= l)
+    while (j < l)
         {
             if(check_point(str[j]) != -1)
                 {
@@ -125,8 +125,8 @@ int *put_cord(char *str, t_cord **cord, int i, int l)
                 }
             else 
             {
-                ft_corddel(cord);
-                return (NULL);
+                ft_corddel(tmp);
+                return (0);
             }
             j++;
         }
@@ -135,13 +135,13 @@ int *put_cord(char *str, t_cord **cord, int i, int l)
 
 t_cord  *pars(char *str)
 {
-    t_cord      *head;
-    char **line;
-    char **line2;
-    int  i;
-    int  j;
+    t_cord  *head;
+    char    **line;
+    char    **line2;
+    int     i;
+    int     j;
 
-    head = NULL;
+    head = (t_cord *)ft_memalloc(sizeof(t_cord));
     i = 0;
     j = 0;
     line = ft_strsplit(str, '\n');
@@ -149,13 +149,13 @@ t_cord  *pars(char *str)
     *ft_count_word1(line[i], ' '));
     head->colors = (int *)ft_memalloc(sizeof(int)*ft_count_word1(str, '\n')
     *ft_count_word1(line[i], ' '));
-    while (i <= ft_count_word1(str, '\n'))
+    while (i < ft_count_word1(str, '\n'))
     {
         line2 = ft_strsplit(line[i], ' ');
         j = put_cord(line2, &head, j,ft_count_word1(line[i], ' '));
         i++;
     }
     head->lines = ft_count_word1(str, '\n');
-    head->coloms = ft_count_word1(line[i], ' ');
+    head->coloms = ft_count_word1(line[1], ' ');
     return (head);
 }

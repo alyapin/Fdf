@@ -6,7 +6,7 @@
 /*   By: kzina <kzina@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/18 15:24:18 by kzina             #+#    #+#             */
-/*   Updated: 2019/07/31 15:14:41 by kzina            ###   ########.fr       */
+/*   Updated: 2019/07/31 17:07:12 by kzina            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,9 +47,6 @@ int     main(int ac, char **av)
     t_mlx       *t;
     char        *str;
     t_cord      *map;
-    int         z[10][10] = {{0,0,0,0,0,0,0,0,0,0},{0,0,0,0,0,0,0,0,0,0},{0,0,0,0,0,0,0,0,0,0},{0,0,0,0,0,0,0,0,0,0},
-    {0,0,0,0,0,0,0,0,0,0},{0,0,0,0,0,0,0,0,0,0},{0,0,0,0,0,0,0,0,0,0},{0,0,0,0,0,0,0,0,0,0},{0,0,0,0,0,0,0,0,0,0},
-    {0,0,0,0,0,0,0,0,0,0}};
 
     //xy = (t_linecor *)ft_memalloc(sizeof(t_linecor));
     if (ac != 2)
@@ -65,7 +62,8 @@ int     main(int ac, char **av)
     t = init_map();
     controls(t);
     map = pars(str);
-    temp_draw_map(z, t, 10);
+    temp_draw_map(map, t, 25);
+    mlx_put_image_to_window(t->mlx, t->win, t->img->image, 0, 0);
     mlx_loop(t->mlx);
     return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: kzina <kzina@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/24 17:40:57 by kzina             #+#    #+#             */
-/*   Updated: 2019/07/31 14:53:07 by kzina            ###   ########.fr       */
+/*   Updated: 2019/07/31 16:38:27 by kzina            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,9 @@ t_image *init_image(t_mlx *ses)
     
     if ((img = (t_image *)ft_memalloc(sizeof(t_image))) == NULL)
         return (NULL);
-    if ((img->image = mlx_new_image(ses->mlx, 500, 500)) == NULL)
+    if ((img->image = mlx_new_image(ses->mlx, 1000, 1000)) == NULL)
         return(NULL);
     img->data_address = (int *)mlx_get_data_addr(img->image, &img->bpp, &img->line_size, &img->endian);
-    img->bpp /= 4;
+    img->line_size /= 4;
     return (img);
 }
