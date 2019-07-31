@@ -6,7 +6,7 @@
 /*   By: kzina <kzina@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/27 16:40:34 by kzina             #+#    #+#             */
-/*   Updated: 2019/07/27 18:04:18 by kzina            ###   ########.fr       */
+/*   Updated: 2019/07/31 15:03:11 by kzina            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include "math.h"
 #include "mlx.h"
 
-void        temp_draw_map(int z[10][10], t_image *param)
+void        temp_draw_map(int z[10][10], t_mlx *param, int fact)
 {
     int         x;
     int         y;
@@ -35,10 +35,10 @@ void        temp_draw_map(int z[10][10], t_image *param)
                 xy->y0 = y * 25;
                 xy->y1 = (y - 1) * 25;
                 xy->x1 = x * 25;*/
-                xy->x0 = (x / z[y][x]) * 25;
-                xy->y0 = (y / z[y][x]) * 25;
-                xy->x1 = (x / z[y - 1][x]) * 25;
-                xy->y0 = ((y - 1) / z[y - 1][x]) * 25;
+                xy->x0 = (x - y) * cos(0.523599) * fact;
+                xy->y0 = (-z[y][x] + (x - y) * sin(0.523599)) * fact;
+                xy->x1 = (x - y - 1) * cos(0.523599) * fact;
+                xy->y1 = (-z[y - 1][x] + (x - y - 1) * sin(0.523599)) * fact;
                 draw(xy, param);
             }
             if (x != 9)
@@ -47,10 +47,10 @@ void        temp_draw_map(int z[10][10], t_image *param)
                 xy->y0 = y * 25;
                 xy->x1 = (x + 1) * 25;
                 xy->y1 = y * 25;*/
-                xy->x0 = (x / z[y][x]) * 25;
-                xy->y0 = (y / z[y][x]) * 25;
-                xy->x1 = ((x + 1) / z[y][x + 1]) * 25;
-                xy->y0 = (y / z[y][x + 1]) * 25;
+                xy->x0 = (x - y) * cos(0.523599) * fact;
+                xy->y0 = (-z[y][x] + (x - y) * sin(0.523599)) * fact;
+                xy->x1 = (x + 1 - y) * cos(0.523599) * fact;
+                xy->y1 = (-z[y][x + 1] + (x + 1 - y) * sin(0.523599)) * fact;
                 draw(xy, param);
             }
             x++;
