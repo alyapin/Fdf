@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   validate.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kzina <kzina@student.42.fr>                +#+  +:+       +#+        */
+/*   By: mtruman <mtruman@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/26 14:05:02 by kzina             #+#    #+#             */
-/*   Updated: 2019/07/27 16:07:21 by kzina            ###   ########.fr       */
+/*   Updated: 2019/07/31 15:13:34 by mtruman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,13 +105,32 @@ int check(char *str)
 void    ft_corddel(t_cord *head)
 {
     t_cord *temp;
+    temp = head;
+    free(temp);
+}
+int *put_cord(char *str, t_cord **cord, int i, int l)
+{
+    int j;
+    t_cord *tmp;
 
-    while (head->next)
-    {
-        temp = head;
-        free(temp);
-        head = head->next;
-    }
+    tmp = *cord;
+    j = 0;
+    while (j <= l)
+        {
+            if(check_point(str[j]) != -1)
+                {
+                    tmp->z[i] =ft_atoi(str[j]);
+                    tmp->colors[i] =check_point(str[j]);
+                    i++;
+                }
+            else 
+            {
+                ft_corddel(cord);
+                return (NULL);
+            }
+            j++;
+        }
+    return(i);
 }
 
 t_cord  *pars(char *str)
@@ -126,22 +145,17 @@ t_cord  *pars(char *str)
     i = 0;
     j = 0;
     line = ft_strsplit(str, '\n');
+    head->z = (int *)ft_memalloc(sizeof(int)*ft_count_word1(str, '\n')
+    *ft_count_word1(line[i], ' '));
+    head->colors = (int *)ft_memalloc(sizeof(int)*ft_count_word1(str, '\n')
+    *ft_count_word1(line[i], ' '));
     while (i <= ft_count_word1(str, '\n'))
     {
         line2 = ft_strsplit(line[i], ' ');
-        while (j <= ft_count_word1(line[i], ' '))
-        {
-            if(check_point(line2[j]) != -1)
-                push_back_t_cord(&head, i, j, ft_atoi(line2[j]), check_point(line2[j]));
-            else 
-            {
-                ft_corddel(head);
-                return (NULL);
-            }
-            j++;
-        }
-        j = 0;
+        j = put_cord(line2, &head, j,ft_count_word1(line[i], ' '));
         i++;
     }
+    head->lines = ft_count_word1(str, '\n');
+    head->coloms = ft_count_word1(line[i], ' ');
     return (head);
 }
