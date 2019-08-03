@@ -6,7 +6,7 @@
 #    By: kzina <kzina@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/02/22 23:12:10 by pbondoer          #+#    #+#              #
-#    Updated: 2019/07/27 16:59:28 by kzina            ###   ########.fr        #
+#    Updated: 2019/08/01 14:30:36 by kzina            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,9 +17,9 @@ SRC = main.c\
 	  init_map.c\
 	  validate.c\
 	  atoi_16.c\
-	  t_cord_functions.c\
 	  draw.c\
 	  temp_draw_map.c\
+	  rotation.c\
 
 OBJ	= $(addprefix $(OBJDIR),$(SRC:.c=.o))
 

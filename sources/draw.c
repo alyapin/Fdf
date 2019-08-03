@@ -6,7 +6,7 @@
 /*   By: kzina <kzina@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/27 13:35:52 by kzina             #+#    #+#             */
-/*   Updated: 2019/07/31 17:02:04 by kzina            ###   ########.fr       */
+/*   Updated: 2019/08/03 13:58:52 by kzina            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,8 @@ void    draw_line(t_line *line, int x1, t_mlx *params)
     k = line->k;
     while (x <= x1)
     {
+        if (x > WIDTH || x < 0 || y > HEIGH || y < 0)
+            return ;
         param->data_address[(k == 1 ? y : x) * param->line_size + (k == 1 ? x : y)] = 0xFFFFFF;
         line->error -= line->dy;
         if (line->error < 0)

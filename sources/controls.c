@@ -6,7 +6,7 @@
 /*   By: kzina <kzina@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/23 17:10:19 by kzina             #+#    #+#             */
-/*   Updated: 2019/07/26 13:57:47 by kzina            ###   ########.fr       */
+/*   Updated: 2019/08/03 15:36:07 by kzina            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,17 @@ int     key_press(int keycode, t_mlx *param)
         int x = 100;
         while (x-- > 0)
             mlx_pixel_put(param->mlx, param->win, 100 + x, 50, 0xEAEAEA);
+    }
+    if (keycode == 126)
+    {
+        param->fact += 10;
+        temp_draw_map(param->cord, param);
+    }
+    if (keycode == 125)
+    {
+        if (param->fact > 10)
+            param->fact -= 10;
+        temp_draw_map(param->cord, param);
     }
     return 0;
 }

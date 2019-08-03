@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strdel.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kzina <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: kzina <kzina@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/07 19:01:17 by kzina             #+#    #+#             */
-/*   Updated: 2019/04/12 20:34:24 by kzina            ###   ########.fr       */
+/*   Updated: 2019/08/01 15:52:38 by kzina            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_strdel(char **as)
+void	ft_strdel(void **as)
 {
 	if (!as)
 		return ;

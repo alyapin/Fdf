@@ -6,7 +6,7 @@
 /*   By: kzina <kzina@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/18 14:16:34 by kzina             #+#    #+#             */
-/*   Updated: 2019/07/19 17:50:29 by kzina            ###   ########.fr       */
+/*   Updated: 2019/08/01 17:06:04 by kzina            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,15 +55,15 @@ static	int		read_fd_to_lst(t_lst *lst, const int fd)
 			line_buff[read_byte] = '\0';
 			to_free = lst->content;
 			lst->content = ft_strjoin(lst->content, line_buff);
-			ft_strdel(&to_free);
+			ft_strdel((void **)&to_free);
 		}
 		else if (read_byte <= 0 && (ft_strlen(lst->content) == 0))
 		{
-			ft_strdel(&line_buff);
+			ft_strdel((void **)&line_buff);
 			return (read_byte == 0 ? 0 : -1);
 		}
 	}
-	ft_strdel(&line_buff);
+	ft_strdel((void **)&line_buff);
 	return (1);
 }
 
@@ -76,7 +76,7 @@ static	char	*get_line(t_lst *lst)
 	if (ft_strchr(lst->content, '\n') == NULL)
 	{
 		res = ft_strdup(lst->content);
-		ft_strdel(&lst->content);
+		ft_strdel((void **)&lst->content);
 		lst->content = (char*)ft_memalloc(sizeof(char) * 1);
 		return (res);
 	}
@@ -85,7 +85,7 @@ static	char	*get_line(t_lst *lst)
 	res = ft_memcpy(res, lst->content, size);
 	to_free = lst->content;
 	lst->content = ft_strdup(ft_strchr(lst->content, '\n') + 1);
-	ft_strdel(&to_free);
+	ft_strdel((void **)&to_free);
 	return (res);
 }
 

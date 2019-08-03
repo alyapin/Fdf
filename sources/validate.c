@@ -6,7 +6,7 @@
 /*   By: kzina <kzina@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/26 14:05:02 by kzina             #+#    #+#             */
-/*   Updated: 2019/07/31 16:54:50 by kzina            ###   ########.fr       */
+/*   Updated: 2019/08/03 15:24:22 by kzina            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,21 +111,22 @@ void    ft_corddel(t_cord *head)
 int     put_cord(char **str, t_cord **cord, int i, int l)
 {
     int j;
-    t_cord *tmp;
 
-    tmp = *cord;
     j = 0;
     while (j < l)
         {
             if(check_point(str[j]) != -1)
                 {
-                    tmp->z[i] =ft_atoi(str[j]);
-                    tmp->colors[i] =check_point(str[j]);
+                    cord[i] = (t_cord *)ft_memalloc(sizeof(t_cord));
+                    cord[i]->y = i / l;
+                    cord[i]->x = i - (cord[i]->y * l);
+                    cord[i]->z = ft_atoi(str[j]);
+                    cord[i]->color = check_point(str[j]);
                     i++;
                 }
             else 
             {
-                ft_corddel(tmp);
+                ft_strdel((void **)cord);
                 return (0);
             }
             j++;
@@ -133,29 +134,27 @@ int     put_cord(char **str, t_cord **cord, int i, int l)
     return(i);
 }
 
-t_cord  *pars(char *str)
+t_cord  **pars(char *str, t_mlx *map)
 {
-    t_cord  *head;
+    t_cord  **head;
     char    **line;
     char    **line2;
     int     i;
     int     j;
 
-    head = (t_cord *)ft_memalloc(sizeof(t_cord));
     i = 0;
     j = 0;
     line = ft_strsplit(str, '\n');
-    head->z = (int *)ft_memalloc(sizeof(int)*ft_count_word1(str, '\n')
-    *ft_count_word1(line[i], ' '));
-    head->colors = (int *)ft_memalloc(sizeof(int)*ft_count_word1(str, '\n')
+    head = (t_cord **)ft_memalloc(sizeof(t_cord *)*ft_count_word1(str, '\n')
     *ft_count_word1(line[i], ' '));
     while (i < ft_count_word1(str, '\n'))
     {
         line2 = ft_strsplit(line[i], ' ');
-        j = put_cord(line2, &head, j,ft_count_word1(line[i], ' '));
+        j = put_cord(line2, head, j, ft_count_word1(line[i], ' '));
         i++;
     }
-    head->lines = ft_count_word1(str, '\n');
-    head->coloms = ft_count_word1(line[1], ' ');
+    map->lines = ft_count_word1(str, '\n');
+    map->coloms = ft_count_word1(line[1], ' ');
+    map->fact = WIDTH / (map->lines > map->coloms ? map->lines * 2 : map->coloms * 2);
     return (head);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mtruman <mtruman@student.42.fr>            +#+  +:+       +#+        */
+/*   By: kzina <kzina@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 16:17:59 by kzina             #+#    #+#             */
-/*   Updated: 2019/07/24 17:08:39 by mtruman          ###   ########.fr       */
+/*   Updated: 2019/08/01 15:53:07 by kzina            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ char				*ft_strchr(const char *s, int c);
 void				ft_strclr(char *s);
 int					ft_strcmp(const char *s1, const char *s2);
 char				*ft_strcpy(char *dst, const char *src);
-void				ft_strdel(char **as);
+void				ft_strdel(void **as);
 char				*ft_strdup(const char *s1);
 int					ft_strequ(char const *s1, char const *s2);
 void				ft_striter(char *s, void (*f)(char*));

@@ -6,7 +6,7 @@
 /*   By: kzina <kzina@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/24 17:40:57 by kzina             #+#    #+#             */
-/*   Updated: 2019/07/31 16:38:27 by kzina            ###   ########.fr       */
+/*   Updated: 2019/08/01 18:02:44 by kzina            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ t_mlx   *init_map(void)
     if ((ses->img = (t_image *)ft_memalloc(sizeof(t_image))) == NULL)
         return (NULL);
     ses->mlx = mlx_init();
-    ses->win = mlx_new_window(ses->mlx, 1000, 1000, "FDF");
+    ses->win = mlx_new_window(ses->mlx, WIDTH, HEIGH, "FDF");
     ses->img = init_image(ses);
     return (ses);
 }
@@ -34,7 +34,7 @@ t_image *init_image(t_mlx *ses)
     
     if ((img = (t_image *)ft_memalloc(sizeof(t_image))) == NULL)
         return (NULL);
-    if ((img->image = mlx_new_image(ses->mlx, 1000, 1000)) == NULL)
+    if ((img->image = mlx_new_image(ses->mlx, WIDTH, HEIGH)) == NULL)
         return(NULL);
     img->data_address = (int *)mlx_get_data_addr(img->image, &img->bpp, &img->line_size, &img->endian);
     img->line_size /= 4;
