@@ -6,7 +6,7 @@
 /*   By: kzina <kzina@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/26 14:05:02 by kzina             #+#    #+#             */
-/*   Updated: 2019/08/03 15:24:22 by kzina            ###   ########.fr       */
+/*   Updated: 2019/08/03 19:13:29 by kzina            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -155,6 +155,6 @@ t_cord  **pars(char *str, t_mlx *map)
     }
     map->lines = ft_count_word1(str, '\n');
     map->coloms = ft_count_word1(line[1], ' ');
-    map->fact = WIDTH / (map->lines > map->coloms ? map->lines * 2 : map->coloms * 2);
+    map->fact = WIDTH / (map->lines * 10);
     return (head);
 }

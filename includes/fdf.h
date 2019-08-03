@@ -6,7 +6,7 @@
 /*   By: kzina <kzina@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/19 16:41:55 by kzina             #+#    #+#             */
-/*   Updated: 2019/08/03 15:20:52 by kzina            ###   ########.fr       */
+/*   Updated: 2019/08/03 18:59:11 by kzina            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@
 # include <stdlib.h>
 # include <fcntl.h>
 # include "../libft/libft.h"
-# define WIDTH 1000
-# define HEIGH 1000
+# define WIDTH 2000
+# define HEIGH 2000
 
 typedef struct      s_image
 {
@@ -55,6 +55,8 @@ typedef struct      s_mlx
     int             coloms;
     int             lines;
     int             fact;
+    int             dx;
+    int             dy;
 }                   t_mlx;
 
 typedef struct      s_line

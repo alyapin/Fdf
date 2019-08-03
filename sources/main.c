@@ -6,7 +6,7 @@
 /*   By: kzina <kzina@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/18 15:24:18 by kzina             #+#    #+#             */
-/*   Updated: 2019/08/03 15:35:45 by kzina            ###   ########.fr       */
+/*   Updated: 2019/08/03 17:44:23 by kzina            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,8 +63,9 @@ int     main(int ac, char **av)
     x = -1;
     t = init_map();
     map = pars(str, t);
-    temp_draw_map(map, t);
+    t->cord = map;
     controls(t);
+    temp_draw_map(map, t);
     mlx_loop(t->mlx);
     return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: kzina <kzina@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/23 17:10:19 by kzina             #+#    #+#             */
-/*   Updated: 2019/08/03 15:36:07 by kzina            ###   ########.fr       */
+/*   Updated: 2019/08/03 19:08:25 by kzina            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,25 +14,53 @@
 #include "../libft/libft.h"
 #include "mlx.h"
 
+void    clear_img(t_mlx *win)
+{
+    ft_bzero(win->img->data_address, WIDTH * HEIGH * 4);
+    mlx_put_image_to_window(win->mlx, win->win, win->img->image, 0, 0);
+}
+
 int     key_press(int keycode, t_mlx *param)
 {
     if (keycode == 53)
+    {
         exit(0);
-    if (keycode == 18)
-    {
-        int x = 100;
-        while (x-- > 0)
-            mlx_pixel_put(param->mlx, param->win, 100 + x, 50, 0xEAEAEA);
-    }
-    if (keycode == 126)
-    {
-        param->fact += 10;
-        temp_draw_map(param->cord, param);
+        mlx_destroy_image(param->mlx, param->img->image);
     }
     if (keycode == 125)
     {
-        if (param->fact > 10)
-            param->fact -= 10;
+        param->dx -= 10;
+        clear_img(param);
+        temp_draw_map(param->cord, param);
+    }
+    if (keycode == 126)
+    {
+        param->dx += 10;
+        clear_img(param);
+        temp_draw_map(param->cord, param);
+    }
+    if (keycode == 123)
+    {
+        param->dy += 10;
+        clear_img(param);
+        temp_draw_map(param->cord, param);
+    }
+    if (keycode == 124)
+    {
+        param->dy -= 10;
+        clear_img(param);
+        temp_draw_map(param->cord, param);
+    }
+    if (keycode == 69)
+    {
+        param->fact += 1;
+        clear_img(param);
+        temp_draw_map(param->cord, param);
+    }
+    if (keycode == 78)
+    {
+        param->fact -= 1;
+        clear_img(param);
         temp_draw_map(param->cord, param);
     }
     return 0;
