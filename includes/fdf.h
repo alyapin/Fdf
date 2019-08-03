@@ -6,7 +6,7 @@
 /*   By: kzina <kzina@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/19 16:41:55 by kzina             #+#    #+#             */
-/*   Updated: 2019/08/03 18:59:11 by kzina            ###   ########.fr       */
+/*   Updated: 2019/08/03 19:38:22 by kzina            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ typedef struct      s_mlx
     int             fact;
     int             dx;
     int             dy;
+    int             dz;
 }                   t_mlx;
 
 typedef struct      s_line

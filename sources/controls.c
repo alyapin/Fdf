@@ -6,7 +6,7 @@
 /*   By: kzina <kzina@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/23 17:10:19 by kzina             #+#    #+#             */
-/*   Updated: 2019/08/03 19:08:25 by kzina            ###   ########.fr       */
+/*   Updated: 2019/08/03 20:06:13 by kzina            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,18 @@ int     key_press(int keycode, t_mlx *param)
     {
         exit(0);
         mlx_destroy_image(param->mlx, param->img->image);
+    }
+    if (keycode == 12)
+    {
+        param->dz += 1;
+        clear_img(param);
+        temp_draw_map(param->cord, param);
+    }
+    if (keycode == 13)
+    {
+        param->dz -= 1;
+        clear_img(param);
+        temp_draw_map(param->cord, param);
     }
     if (keycode == 125)
     {

@@ -6,7 +6,7 @@
 /*   By: kzina <kzina@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/24 17:40:57 by kzina             #+#    #+#             */
-/*   Updated: 2019/08/03 19:02:21 by kzina            ###   ########.fr       */
+/*   Updated: 2019/08/03 20:05:08 by kzina            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ t_mlx   *init_map(void)
     ses->img = init_image(ses);
     ses->dx = 0;
     ses->dy = 0;
+    ses->dz = 1;
     return (ses);
 }
 

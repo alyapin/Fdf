@@ -6,7 +6,7 @@
 /*   By: kzina <kzina@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/26 14:05:02 by kzina             #+#    #+#             */
-/*   Updated: 2019/08/03 19:13:29 by kzina            ###   ########.fr       */
+/*   Updated: 2019/08/03 19:55:18 by kzina            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ int  check_point(char *line)
     while (line[i]>= '0' && line[i]<= '9')
         i++;
     if(line[i] == '\0')
-        return (1);
+        return (0xFFFFFF);
     if(line[i] == ',' && line[i + 1]=='0' && line[i + 2] == 'x')
         return (color(&line[i]));
     return (-1);

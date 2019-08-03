@@ -6,7 +6,7 @@
 /*   By: kzina <kzina@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/27 16:40:34 by kzina             #+#    #+#             */
-/*   Updated: 2019/08/03 19:15:36 by kzina            ###   ########.fr       */
+/*   Updated: 2019/08/03 20:10:54 by kzina            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,10 +38,12 @@ t_linecor   *write_cor(t_cord *map, t_cord *map2, t_mlx *param)
     //rotate(&map2);
     //iso(&map->x, &map->y, map->z);
     //iso(&map2->x, &map2->y, map2->z);
-    line->x0 = ((map->x + map->y) * sin(0.523599) - map->z) * param->fact + (WIDTH / 2.5) + param->dx;
+    line->x0 = ((map->x + map->y) * sin(0.523599) - (map->z != 0 ? map->z * param->dz : map->z)) * param->fact + (WIDTH / 2.5) + param->dx;
     line->y0 = (map->x - map->y) * cos(0.523599) * param->fact + (HEIGH / 2.5) + param->dy;
-    line->x1 = ((map2->x + map2->y) * sin(0.523599) - map2->z) * param->fact + (WIDTH / 2.5) + param->dx;
+    line->x1 = ((map2->x + map2->y) * sin(0.523599) - (map2->z != 0 ? map2->z * param->dz : map2->z)) * param->fact + (WIDTH / 2.5) + param->dx;
     line->y1 = (map2->x - map2->y) * cos(0.523599) * param->fact + (HEIGH / 2.5) + param->dy;
+    line->color0 = map->color;
+    line->color0 = map->color;
     return (line);
 }
 
