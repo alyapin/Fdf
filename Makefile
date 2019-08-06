@@ -6,20 +6,21 @@
 #    By: kzina <kzina@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/02/22 23:12:10 by pbondoer          #+#    #+#              #
-#    Updated: 2019/08/01 14:30:36 by kzina            ###   ########.fr        #
+#    Updated: 2019/08/06 18:20:15 by kzina            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = fdf
+
+HEADER = ./includes/fdf.h
 
 SRC = main.c\
 	  controls.c\
 	  init_map.c\
 	  validate.c\
 	  atoi_16.c\
-	  draw.c\
-	  temp_draw_map.c\
-	  rotation.c\
+	  draw_line.c\
+	  render.c\
 
 OBJ	= $(addprefix $(OBJDIR),$(SRC:.c=.o))
 
@@ -49,7 +50,7 @@ all: obj $(FT_LIB) $(MLX_LIB) $(NAME)
 obj:
 	mkdir -p $(OBJDIR)
 
-$(OBJDIR)%.o:$(SRCDIR)%.c
+$(OBJDIR)%.o:$(SRCDIR)%.c $(HEADER)
 	$(CC) $(CFLAGS) $(MLX_INC) $(FT_INC) -I $(INCDIR) -o $@ -c $<
 
 $(FT_LIB):

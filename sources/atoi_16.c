@@ -6,13 +6,13 @@
 /*   By: kzina <kzina@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/06 16:52:05 by dtedgui           #+#    #+#             */
-/*   Updated: 2019/07/26 14:19:28 by kzina            ###   ########.fr       */
+/*   Updated: 2019/08/06 18:17:57 by kzina            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libft/libft.h"
 
-int		ft_power(int nb, int power)
+int			ft_power(int nb, int power)
 {
 	if (power == 0)
 		return (1);
