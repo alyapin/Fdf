@@ -6,7 +6,7 @@
 /*   By: kzina <kzina@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/24 17:40:57 by kzina             #+#    #+#             */
-/*   Updated: 2019/08/06 18:51:11 by kzina            ###   ########.fr       */
+/*   Updated: 2019/08/07 18:12:22 by kzina            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,37 @@
 #include "../libft/libft.h"
 #include "mlx.h"
 
-void    clear_img(t_mlx *win)
+void	cord_del(t_cord **map, t_mlx *param)
 {
-    ft_bzero(win->img->data_address, WIDTH * HEIGH * 4);
-    mlx_put_image_to_window(win->mlx, win->win, win->img->image, 0, 0);
+	int		x;
+
+	x = 0;
+	while (x < param->coloms * param->lines)
+	{
+		free(map[x]);
+		x++;
+	}
+}
+
+void	mlx_del(t_mlx *param)
+{
+	if (param->win != NULL)
+		mlx_destroy_window(param->mlx, param->win);
+	if (param->img != NULL)
+	{
+		if (param->img->image != NULL)
+			mlx_destroy_image(param->mlx, param->img->image);
+		ft_memdel((void **)param->img);
+	}
+	if (param->cord != NULL)
+		cord_del(param->cord, param);
+	ft_memdel((void **)&param);
+}
+
+void	clear_img(t_mlx *win)
+{
+	ft_bzero(win->img->data_address, WIDTH * HEIGH * 4);
+	mlx_put_image_to_window(win->mlx, win->win, win->img->image, 0, 0);
 }
 
 t_mlx	*init_map(void)

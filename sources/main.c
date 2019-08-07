@@ -6,7 +6,7 @@
 /*   By: kzina <kzina@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/18 15:24:18 by kzina             #+#    #+#             */
-/*   Updated: 2019/08/06 18:20:02 by kzina            ###   ########.fr       */
+/*   Updated: 2019/08/07 18:47:54 by kzina            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,16 +25,23 @@ char	*reader(int fd)
 {
 	char	*input;
 	char	*temp;
+	char	*to_free;
 	int		ct_str;
 
 	ct_str = 0;
 	input = (char*)ft_memalloc(sizeof(char));
 	while (get_next_line(fd, &temp) > 0)
 	{
+		to_free = input;
 		input = ft_strjoin(input, temp);
+		ft_strdel((void **)&to_free);
+		to_free = input;
 		input = ft_strjoin(input, "\n");
+		ft_strdel((void **)&to_free);
+		ft_strdel((void **)&temp);
 		ct_str++;
 	}
+	ft_strdel((void **)&temp);
 	if (ct_str == 0)
 		return (NULL);
 	return (input);

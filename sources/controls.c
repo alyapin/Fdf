@@ -6,7 +6,7 @@
 /*   By: kzina <kzina@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/23 17:10:19 by kzina             #+#    #+#             */
-/*   Updated: 2019/08/06 18:55:26 by kzina            ###   ########.fr       */
+/*   Updated: 2019/08/07 17:59:24 by kzina            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ int		key_press(int keycode, t_mlx *param)
 	if (keycode == 53)
 	{
 		exit(0);
-		mlx_destroy_image(param->mlx, param->img->image);
+		mlx_del(param);
 	}
 	if (keycode == 91 || keycode == 88 || keycode == 84 || keycode == 86)
 		xy_rotate(keycode, param);

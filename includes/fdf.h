@@ -6,7 +6,7 @@
 /*   By: kzina <kzina@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/19 16:41:55 by kzina             #+#    #+#             */
-/*   Updated: 2019/08/06 18:19:54 by kzina            ###   ########.fr       */
+/*   Updated: 2019/08/07 17:59:10 by kzina            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,5 +98,7 @@ t_image			*init_image(t_mlx *ses);
 void			iso(int *x, int *y, int z);
 void			clear_img(t_mlx *win);
 void			swap_coor(int *x, int *y);
+void			mlx_del(t_mlx *param);
+void			cord_del(t_cord **map, t_mlx *param);
 
 #endif

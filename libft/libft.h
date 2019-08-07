@@ -6,7 +6,7 @@
 /*   By: kzina <kzina@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 16:17:59 by kzina             #+#    #+#             */
-/*   Updated: 2019/08/01 15:53:07 by kzina            ###   ########.fr       */
+/*   Updated: 2019/08/07 18:29:04 by kzina            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,5 +107,6 @@ size_t				ft_lstcount(t_list *lst);
 void				ft_lstrev(t_list **alst);
 int					get_next_line(const int fd, char **line);
 int					ft_count_word(char const *str, char c);
+void				ft_strarraydel(char **str);
 
 #endif

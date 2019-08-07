@@ -6,7 +6,7 @@
 /*   By: kzina <kzina@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/26 14:05:02 by kzina             #+#    #+#             */
-/*   Updated: 2019/08/06 17:46:22 by kzina            ###   ########.fr       */
+/*   Updated: 2019/08/07 18:30:04 by kzina            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int		color(char *str)
 		j++;
 	}
 	j = ft_atoi_base(tmp, 16);
-	free(tmp);
+	ft_strdel((void **)&tmp);
 	return (j);
 }
 
@@ -125,10 +125,13 @@ t_cord	**pars(char *str, t_mlx *map)
 	{
 		line2 = ft_strsplit(line[i], ' ');
 		j = put_cord(line2, head, j, ft_count_word(line[i], ' '));
+		ft_strarraydel(line2);
 		i++;
 	}
 	map->lines = ft_count_word(str, '\n');
 	map->coloms = ft_count_word(line[1], ' ');
 	map->fact = WIDTH / (map->lines * 10);
+	ft_strdel((void **)&str);
+	ft_strarraydel(line);
 	return (head);
 }

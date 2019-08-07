@@ -6,7 +6,7 @@
 #    By: kzina <kzina@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/04/10 21:55:53 by kzina             #+#    #+#              #
-#    Updated: 2019/08/01 17:03:39 by kzina            ###   ########.fr        #
+#    Updated: 2019/08/07 18:28:45 by kzina            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -79,6 +79,7 @@ SRC= ft_abs.c\
 	ft_toupper.c\
 	ft_lstcount.c\
 	ft_lstrev.c\
+	ft_strarraydel.c\
 	get_next_line.c\
 
 OBJ= $(SRC:.c=.o)

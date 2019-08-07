@@ -6,7 +6,7 @@
 /*   By: kzina <kzina@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/27 16:40:34 by kzina             #+#    #+#             */
-/*   Updated: 2019/08/06 18:22:06 by kzina            ###   ########.fr       */
+/*   Updated: 2019/08/07 17:59:51 by kzina            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,7 @@ void		write_cor(t_cord *map, t_cord *map2, t_mlx *param)
 	line->x1 += WIDTH / 2.5 + param->dx;
 	line->y1 += HEIGH / 2.5 + param->dy;
 	draw(line, param);
+	ft_strdel((void **)&line);
 }
 
 t_cord		**copy(t_cord **map, t_mlx *param)
@@ -121,4 +122,5 @@ void		render(t_cord **map, t_mlx *param)
 		y++;
 	}
 	mlx_put_image_to_window(param->mlx, param->win, param->img->image, 0, 0);
+	cord_del(map2, param);
 }
