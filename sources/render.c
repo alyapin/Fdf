@@ -6,7 +6,7 @@
 /*   By: kzina <kzina@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/27 16:40:34 by kzina             #+#    #+#             */
-/*   Updated: 2019/08/07 17:59:51 by kzina            ###   ########.fr       */
+/*   Updated: 2019/08/07 19:42:33 by kzina            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,8 +65,8 @@ void		write_cor(t_cord *map, t_cord *map2, t_mlx *param)
 	line->y1 = map2->y;
 	line->z0 = map->z;
 	line->z1 = map2->z;
-	line->color0 = map->color;
-	line->color1 = map->color;
+	line->color0 = get_color_map(map, param);
+	line->color1 = get_color_map(map2, param);
 	line = rotate(line, param);
 	line->x0 += WIDTH / 2.5 + param->dx;
 	line->y0 += HEIGH / 2.5 + param->dy;

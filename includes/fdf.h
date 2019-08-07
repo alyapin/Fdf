@@ -6,7 +6,7 @@
 /*   By: kzina <kzina@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/19 16:41:55 by kzina             #+#    #+#             */
-/*   Updated: 2019/08/07 17:59:10 by kzina            ###   ########.fr       */
+/*   Updated: 2019/08/07 19:42:22 by kzina            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,7 @@ typedef	struct	s_mlx
 	int			dz;
 	double		x;
 	double		y;
+	int			mid;
 }				t_mlx;
 typedef	struct	s_line
 {
@@ -100,5 +101,8 @@ void			clear_img(t_mlx *win);
 void			swap_coor(int *x, int *y);
 void			mlx_del(t_mlx *param);
 void			cord_del(t_cord **map, t_mlx *param);
+char			*reader(int fd);
+int				get_color_map(t_cord *map, t_mlx *param);
+void			find_mid(t_cord **map, t_mlx *param);
 
 #endif

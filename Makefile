@@ -6,7 +6,7 @@
 #    By: kzina <kzina@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/02/22 23:12:10 by pbondoer          #+#    #+#              #
-#    Updated: 2019/08/06 18:20:15 by kzina            ###   ########.fr        #
+#    Updated: 2019/08/07 19:04:27 by kzina            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,6 +21,7 @@ SRC = main.c\
 	  atoi_16.c\
 	  draw_line.c\
 	  render.c\
+	  reader.c\
 
 OBJ	= $(addprefix $(OBJDIR),$(SRC:.c=.o))
 

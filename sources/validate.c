@@ -6,7 +6,7 @@
 /*   By: kzina <kzina@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/26 14:05:02 by kzina             #+#    #+#             */
-/*   Updated: 2019/08/07 18:30:04 by kzina            ###   ########.fr       */
+/*   Updated: 2019/08/07 20:01:27 by kzina            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ int		check_point(char *line)
 	while (line[i] >= '0' && line[i] <= '9')
 		i++;
 	if (line[i] == '\0')
-		return (0xFFFFFF);
+		return (0xFFFFF1);
 	if (line[i] == ',' && line[i + 1] == '0' && line[i + 2] == 'x')
 		return (color(&line[i]));
 	return (-1);
@@ -130,7 +130,7 @@ t_cord	**pars(char *str, t_mlx *map)
 	}
 	map->lines = ft_count_word(str, '\n');
 	map->coloms = ft_count_word(line[1], ' ');
-	map->fact = WIDTH / (map->lines * 10);
+	map->fact = WIDTH / (map->lines * map->coloms) + 4;
 	ft_strdel((void **)&str);
 	ft_strarraydel(line);
 	return (head);
