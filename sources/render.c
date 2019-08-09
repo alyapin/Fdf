@@ -6,7 +6,7 @@
 /*   By: kzina <kzina@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/27 16:40:34 by kzina             #+#    #+#             */
-/*   Updated: 2019/08/07 19:42:33 by kzina            ###   ########.fr       */
+/*   Updated: 2019/08/09 05:07:53 by kzina            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,19 +59,19 @@ void		write_cor(t_cord *map, t_cord *map2, t_mlx *param)
 	t_linecor	*line;
 
 	line = (t_linecor *)ft_memalloc(sizeof(t_linecor));
-	line->x0 = map->x;
-	line->y0 = map->y;
-	line->x1 = map2->x;
-	line->y1 = map2->y;
-	line->z0 = map->z;
-	line->z1 = map2->z;
+	line->x0 = map->y;
+	line->y0 = map->x;
+	line->x1 = map2->y;
+	line->y1 = map2->x;
+	line->z0 = map->z * param->dz;
+	line->z1 = map2->z * param->dz;
 	line->color0 = get_color_map(map, param);
 	line->color1 = get_color_map(map2, param);
 	line = rotate(line, param);
-	line->x0 += WIDTH / 2.5 + param->dx;
-	line->y0 += HEIGH / 2.5 + param->dy;
-	line->x1 += WIDTH / 2.5 + param->dx;
-	line->y1 += HEIGH / 2.5 + param->dy;
+	line->x0 += WIDTH / 2 + param->dx;
+	line->y0 += HEIGH / 2 + param->dy;
+	line->x1 += WIDTH / 2 + param->dx;
+	line->y1 += HEIGH / 2 + param->dy;
 	draw(line, param);
 	ft_strdel((void **)&line);
 }
@@ -121,6 +121,6 @@ void		render(t_cord **map, t_mlx *param)
 		}
 		y++;
 	}
-	mlx_put_image_to_window(param->mlx, param->win, param->img->image, 0, 0);
-	cord_del(map2, param);
+	put_image(param);
+	ft_strarraydel((void ***)&map2);
 }

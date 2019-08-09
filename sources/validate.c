@@ -6,7 +6,7 @@
 /*   By: kzina <kzina@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/26 14:05:02 by kzina             #+#    #+#             */
-/*   Updated: 2019/08/07 20:01:27 by kzina            ###   ########.fr       */
+/*   Updated: 2019/08/09 04:51:18 by kzina            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,30 +56,19 @@ int		check_point(char *line)
 
 int		check(char *str)
 {
-	int i;
-	int k;
-	int n;
+	char	**line1;
+	int		i;
 
-	i = -1;
-	k = 0;
-	n = 0;
-	while (str[i++] != '\n')
-		if (str[i] == ' ')
-			k++;
-	i = -1;
-	while (str[i++] != '\0')
+	i = 0;
+	line1 = ft_strsplit(str, '\n');
+	while (i < ft_count_word(str, '\n'))
 	{
-		if (str[i] == ' ')
-			n++;
-		if (str[i] == '\n')
-		{
-			if (k != n)
-				return (0);
-			else
-				n = 0;
-		}
+		if (ft_count_word(line1[0], ' ') != ft_count_word(line1[i], ' '))
+			return (1);
+		i++;
 	}
-	return (1);
+	ft_strarraydel((void ***)&line1);
+	return (0);
 }
 
 int		put_cord(char **str, t_cord **cord, int i, int l)
@@ -125,13 +114,14 @@ t_cord	**pars(char *str, t_mlx *map)
 	{
 		line2 = ft_strsplit(line[i], ' ');
 		j = put_cord(line2, head, j, ft_count_word(line[i], ' '));
-		ft_strarraydel(line2);
+		ft_strarraydel((void ***)&line2);
 		i++;
 	}
 	map->lines = ft_count_word(str, '\n');
 	map->coloms = ft_count_word(line[1], ' ');
-	map->fact = WIDTH / (map->lines * map->coloms) + 4;
+	map->fact = WIDTH / ((map->coloms > map->lines
+	? map->coloms : map->lines) * 2);
 	ft_strdel((void **)&str);
-	ft_strarraydel(line);
+	ft_strarraydel((void ***)&line);
 	return (head);
 }

@@ -6,7 +6,7 @@
 /*   By: kzina <kzina@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/18 15:24:18 by kzina             #+#    #+#             */
-/*   Updated: 2019/08/07 19:42:57 by kzina            ###   ########.fr       */
+/*   Updated: 2019/08/09 03:14:30 by kzina            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ int		main(int ac, char **av)
 	t_mlx	*t;
 	char	*str;
 	t_cord	**map;
-	int		x;
 
 	if (ac != 2)
 	{
@@ -31,7 +30,8 @@ int		main(int ac, char **av)
 		ft_putstr("reading from file error\n");
 		return (1);
 	}
-	x = -1;
+	if (check(str) == 1)
+		return (error_messege(1));
 	t = init_map();
 	map = pars(str, t);
 	t->cord = map;

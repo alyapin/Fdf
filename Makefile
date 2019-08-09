@@ -6,7 +6,7 @@
 #    By: kzina <kzina@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/02/22 23:12:10 by pbondoer          #+#    #+#              #
-#    Updated: 2019/08/07 19:04:27 by kzina            ###   ########.fr        #
+#    Updated: 2019/08/09 05:12:52 by kzina            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,15 +18,15 @@ SRC = main.c\
 	  controls.c\
 	  init_map.c\
 	  validate.c\
-	  atoi_16.c\
 	  draw_line.c\
 	  render.c\
 	  reader.c\
+	  menu.c\
 
 OBJ	= $(addprefix $(OBJDIR),$(SRC:.c=.o))
 
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror -g
+CFLAGS = -Wall -Wextra -Werror -g 
 
 MLX = ./minilibx_macos/
 MLX_LIB	= $(addprefix $(MLX),mlx.a)
@@ -49,29 +49,29 @@ RESET= \033[0m
 all: obj $(FT_LIB) $(MLX_LIB) $(NAME)
 
 obj:
-	mkdir -p $(OBJDIR)
+	@mkdir -p $(OBJDIR)
 
 $(OBJDIR)%.o:$(SRCDIR)%.c $(HEADER)
-	$(CC) $(CFLAGS) $(MLX_INC) $(FT_INC) -I $(INCDIR) -o $@ -c $<
+	@$(CC) $(CFLAGS) $(MLX_INC) $(FT_INC) -I $(INCDIR) -o $@ -c $<
 
 $(FT_LIB):
-	make -C $(FT)
+	@make -C $(FT)
 
 $(MLX_LIB):
-	make -C $(MLX)
+	@make -C $(MLX)
 
 $(NAME): $(OBJ)
-	$(CC) $(OBJ) $(MLX_LNK) $(FT_LNK) -lm -o $(NAME)
-	echo "\n$(NAME): $(GREEN)object files were created $(RESET)"
-	echo "$(NAME): $(GREEN)$(NAME) was created$(RESET)"
+	@$(CC) $(OBJ) $(MLX_LNK) $(FT_LNK) -lm -o $(NAME)
+	@echo "\n$(NAME): $(GREEN) object files were created $(RESET)"
+	@echo "$(NAME): $(GREEN) $(NAME) was created $(RESET)"
 
 clean:
-	rm -rf $(OBJDIR)
-	make -C $(FT) clean
-	make -C $(MLX) clean
+	@rm -rf $(OBJDIR)
+	@make -C $(FT) clean
+	@make -C $(MLX) clean
 
 fclean: clean
-	rm -rf $(NAME)
-	make -C $(FT) fclean
+	@rm -rf $(NAME)
+	@make -C $(FT) fclean
 
 re: fclean all

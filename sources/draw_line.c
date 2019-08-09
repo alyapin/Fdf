@@ -6,7 +6,7 @@
 /*   By: kzina <kzina@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/27 13:35:52 by kzina             #+#    #+#             */
-/*   Updated: 2019/08/07 20:05:03 by kzina            ###   ########.fr       */
+/*   Updated: 2019/08/09 01:39:14 by kzina            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,23 +57,23 @@ void	draw_line(t_line *line, int x1, t_mlx *params, t_linecor *xy)
 	t_image	*param;
 
 	param = params->img;
-	x = line->x;
+	x = line->x - 1;
 	y = line->y;
 	k = line->k;
-	start = x;
-	while (x <= x1)
+	start = x + 1;
+	while (x++ <= x1)
 	{
-		if (x >= WIDTH || x <= 0 || y >= HEIGH || y <= 0)
-			return ;
-		param->data_address[(k == 1 ? y : x) *
-		param->line_size + (k == 1 ? x : y)] = get_color(start, x1, x, xy);
+		if (!(x >= WIDTH || x <= 0 || y >= HEIGH || y <= 0))
+			if (param->data_address[(k == 1 ? y : x) *
+			param->line_size + (k == 1 ? x : y)] == 0)
+				param->data_address[(k == 1 ? y : x) *
+			param->line_size + (k == 1 ? x : y)] = get_color(start, x1, x, xy);
 		line->error -= line->dy;
 		if (line->error < 0)
 		{
 			y += line->ystep;
 			line->error += line->dx;
 		}
-		x++;
 	}
 }
 

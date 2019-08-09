@@ -6,7 +6,7 @@
 /*   By: kzina <kzina@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/24 17:40:57 by kzina             #+#    #+#             */
-/*   Updated: 2019/08/07 19:49:03 by kzina            ###   ########.fr       */
+/*   Updated: 2019/08/09 05:05:57 by kzina            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,14 @@ void	mlx_del(t_mlx *param)
 			mlx_destroy_image(param->mlx, param->img->image);
 		ft_memdel((void **)param->img);
 	}
+	if (param->menu != NULL)
+	{
+		if (param->menu->image != NULL)
+			mlx_destroy_image(param->mlx, param->menu->image);
+		ft_memdel((void **)param->menu);
+	}
 	if (param->cord != NULL)
-		cord_del(param->cord, param);
+		ft_strarraydel((void ***)param->cord);
 	ft_memdel((void **)&param);
 }
 
@@ -53,29 +59,41 @@ t_mlx	*init_map(void)
 
 	if ((ses = (t_mlx *)ft_memalloc(sizeof(t_mlx))) == NULL)
 		return (NULL);
-	if ((ses->img = (t_image *)ft_memalloc(sizeof(t_image))) == NULL)
-		return (NULL);
 	ses->mlx = mlx_init();
 	ses->win = mlx_new_window(ses->mlx, WIDTH, HEIGH, "FDF");
-	ses->img = init_image(ses);
+	init_image(ses);
 	ses->dx = 0;
 	ses->dy = 0;
 	ses->dz = 1;
-	ses->y = 0.5;
-	ses->x = 0.3;
+	ses->y = -0.9;
+	ses->x = 0.5;
+	ses->color1 = 0xFF1493;
+	ses->color2 = 0x00BFff;
+	ses->color3 = 0xFF4500;
 	return (ses);
 }
 
-t_image	*init_image(t_mlx *ses)
+void	init_image(t_mlx *ses)
 {
 	t_image	*img;
+	t_image	*menu;
+	int		width;
+	int		height;
 
+	width = 200;
+	height = 1300;
 	if ((img = (t_image *)ft_memalloc(sizeof(t_image))) == NULL)
-		return (NULL);
+		return ;
 	if ((img->image = mlx_new_image(ses->mlx, WIDTH, HEIGH)) == NULL)
-		return (NULL);
+		return ;
+	if ((menu = (t_image *)ft_memalloc(sizeof(t_image))) == NULL)
+		return ;
+	if ((menu->image = mlx_xpm_file_to_image(ses->mlx,
+	"menu.xpm", &width, &height)) == NULL)
+		return ;
 	img->data_address = (int *)mlx_get_data_addr(img->image,
 	&img->bpp, &img->line_size, &img->endian);
 	img->line_size /= 4;
-	return (img);
+	ses->menu = menu;
+	ses->img = img;
 }

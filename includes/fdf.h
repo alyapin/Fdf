@@ -6,7 +6,7 @@
 /*   By: kzina <kzina@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/19 16:41:55 by kzina             #+#    #+#             */
-/*   Updated: 2019/08/07 19:42:22 by kzina            ###   ########.fr       */
+/*   Updated: 2019/08/09 05:07:25 by kzina            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@
 # include <stdlib.h>
 # include <fcntl.h>
 # include "../libft/libft.h"
-# define WIDTH 2000
-# define HEIGH 2000
+# define WIDTH 1500
+# define HEIGH 1500
 
 typedef struct	s_image
 {
@@ -51,6 +51,7 @@ typedef	struct	s_mlx
 	void		*mlx;
 	void		*win;
 	t_image		*img;
+	t_image		*menu;
 	t_cord		**cord;
 	int			coloms;
 	int			lines;
@@ -60,6 +61,9 @@ typedef	struct	s_mlx
 	int			dz;
 	double		x;
 	double		y;
+	int			color1;
+	int			color2;
+	int			color3;
 	int			mid;
 }				t_mlx;
 typedef	struct	s_line
@@ -95,7 +99,7 @@ t_cord			*new_t_cord(int x, int y, int z, int color);
 void			push_back_t_cord(t_cord **head, int x, int y, int z, int color);
 void			draw(t_linecor *xy, t_mlx *param);
 void			render(t_cord **map, t_mlx *param);
-t_image			*init_image(t_mlx *ses);
+void			init_image(t_mlx *ses);
 void			iso(int *x, int *y, int z);
 void			clear_img(t_mlx *win);
 void			swap_coor(int *x, int *y);
@@ -104,5 +108,10 @@ void			cord_del(t_cord **map, t_mlx *param);
 char			*reader(int fd);
 int				get_color_map(t_cord *map, t_mlx *param);
 void			find_mid(t_cord **map, t_mlx *param);
+void			put_image(t_mlx *param);
+int				error_messege(int i);
+void			change_color(t_mlx *param);
+void			dancing(t_mlx *param);
+void			inc_z(int keycode, t_mlx *param);
 
 #endif

@@ -6,20 +6,21 @@
 /*   By: kzina <kzina@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/07 18:24:13 by kzina             #+#    #+#             */
-/*   Updated: 2019/08/07 18:27:58 by kzina            ###   ########.fr       */
+/*   Updated: 2019/08/09 04:52:56 by kzina            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_strarraydel(char **str)
+void	ft_strarraydel(void ***str)
 {
 	int x;
 
 	x = 0;
-	while (str[x] != NULL)
+	while ((*str)[x] != NULL)
 	{
-		ft_strdel((void **)&str[x]);
+		ft_strdel(&(*str)[x]);
 		x++;
 	}
+	ft_strdel((void **)str);
 }

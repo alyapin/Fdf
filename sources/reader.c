@@ -6,7 +6,7 @@
 /*   By: kzina <kzina@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/07 19:02:56 by kzina             #+#    #+#             */
-/*   Updated: 2019/08/07 19:44:03 by kzina            ###   ########.fr       */
+/*   Updated: 2019/08/09 03:19:19 by kzina            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,11 @@
 int		get_color_map(t_cord *map, t_mlx *param)
 {
 	if (map->z > param->mid && map->color == 0xFFFFF1)
-		return (0xFF1493);
+		return (param->color1);
 	if (map->z < param->mid && map->color == 0xFFFFF1)
-		return (0x00BFff);
+		return (param->color2);
 	if (map->z == param->mid && map->color == 0xFFFFF1)
-		return (0xFF4500);
+		return (param->color3);
 	return (map->color);
 }
 
@@ -72,7 +72,6 @@ char	*reader(int fd)
 		ft_strdel((void **)&temp);
 		ct_str++;
 	}
-	ft_strdel((void **)&temp);
 	if (ct_str == 0)
 		return (NULL);
 	return (input);

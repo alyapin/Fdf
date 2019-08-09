@@ -6,16 +6,17 @@
 #    By: kzina <kzina@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/04/10 21:55:53 by kzina             #+#    #+#              #
-#    Updated: 2019/08/07 18:28:45 by kzina            ###   ########.fr        #
+#    Updated: 2019/08/09 05:12:45 by kzina            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME=libft.a
-C= -Wall -Werror -Wextra -I.-03 -c
+C= -g -Wall -Werror -Wextra -I. -c
 A=ar rc
 R=ranlib
 SRC= ft_abs.c\
 	ft_atoi.c\
+	ft_atoi_base.c\
 	ft_bzero.c\
 	ft_count_words_split.c\
 	ft_isalnum.c\
