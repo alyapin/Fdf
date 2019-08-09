@@ -5,8 +5,8 @@
 #                                                     +:+ +:+         +:+      #
 #    By: kzina <kzina@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2016/02/22 23:12:10 by pbondoer          #+#    #+#              #
-#    Updated: 2019/08/09 05:12:52 by kzina            ###   ########.fr        #
+#    Created: 2019/07/22 23:12:10 by kzina	           #+#    #+#              #
+#    Updated: 2019/08/09 17:59:06 by kzina            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -74,4 +74,8 @@ fclean: clean
 	@rm -rf $(NAME)
 	@make -C $(FT) fclean
 
-re: fclean all
+re: 
+	@$(MAKE) fclean
+	@$(MAKE) all
+
+.PHONY: clean fclean all re

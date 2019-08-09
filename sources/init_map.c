@@ -6,7 +6,7 @@
 /*   By: kzina <kzina@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/24 17:40:57 by kzina             #+#    #+#             */
-/*   Updated: 2019/08/09 05:05:57 by kzina            ###   ########.fr       */
+/*   Updated: 2019/08/09 17:55:03 by kzina            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,7 @@ void	init_image(t_mlx *ses)
 	if ((menu = (t_image *)ft_memalloc(sizeof(t_image))) == NULL)
 		return ;
 	if ((menu->image = mlx_xpm_file_to_image(ses->mlx,
-	"menu.xpm", &width, &height)) == NULL)
+	"menu/menu.xpm", &width, &height)) == NULL)
 		return ;
 	img->data_address = (int *)mlx_get_data_addr(img->image,
 	&img->bpp, &img->line_size, &img->endian);

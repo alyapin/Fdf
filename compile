@@ -1,1 +1,0 @@
-gcc -Wall -Wextra -Werror -g -lmlx -lm -lft -Llibft/ -L/usr/local/lib/ -framework OpenGL -framework AppKit -Ilibft/libft.h -I/usr/local/include/ ./sources/main.c ./sources/controls.c
